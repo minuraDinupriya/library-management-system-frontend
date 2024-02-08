@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-all-books',
@@ -37,12 +38,27 @@ export class ViewAllBooksComponent implements OnInit {
       .subscribe((responce: string) => {
         console.log(responce);
         this.loadBooks();
+        Swal.fire({
+          title: "Good job!",
+          text: `${this.selectedBook.tittle} is deleted` ,
+          icon: "success"
+        });
         this.selectedBook = null;
+        
       });
   }
 
   setSelectedBook(book: any) {
     this.selectedBook = book;
     console.log('Set Selected Book' + book.id);
+  }
+
+  saveBooks(){
+    let postApi="http://localhost:8080/book/add";
+    this.http.post(postApi, this.selectedBook).subscribe(()=>{
+      console.log("saved")
+      this.loadBooks();
+      this.selectedBook={};
+    })
   }
 }
