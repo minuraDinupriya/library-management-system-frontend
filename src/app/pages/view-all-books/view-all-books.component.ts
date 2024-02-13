@@ -58,6 +58,11 @@ export class ViewAllBooksComponent implements OnInit {
     this.http.post(postApi, this.selectedBook).subscribe(()=>{
       console.log("saved")
       this.loadBooks();
+      Swal.fire({
+        title: "Good job!",
+        text: `book with id ${this.selectedBook.id} is updated` ,
+        icon: "success"
+      });
       this.selectedBook={};
     })
   }
