@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit{
 
   private http;
   public countryList:any;
+  public selectedCountry:any;
 
   constructor(httpClient:HttpClient) {
     this.http=httpClient
@@ -31,5 +32,9 @@ export class RegisterComponent implements OnInit{
       this.countryList=res;
       console.log(res);
     })
+  }
+  setSelectedCountry(country:any){
+    this.selectedCountry=country;
+    console.log(country)
   }
 }
