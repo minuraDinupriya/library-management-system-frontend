@@ -33,7 +33,8 @@ export class ViewBorrowersComponent implements OnInit {
   }
 
   deleteBorrower() {
-    let api = 'http://localhost:8080/book/' + this.selectedBorrower.id;
+    console.log(this.selectedBorrower.id)
+    let api = 'http://localhost:8080/' + this.selectedBorrower.bid;
     this.http
       .delete(api, { responseType: 'text' })
       .subscribe((responce: string) => {
@@ -55,7 +56,7 @@ export class ViewBorrowersComponent implements OnInit {
   }
 
   saveBorrower(){
-    let postApi="http://localhost:8080/book/add";
+    let postApi="http://localhost:8080/add";
     this.http.post(postApi, this.selectedBorrower).subscribe(()=>{
       console.log("saved")
       this.loadBorrowers();
