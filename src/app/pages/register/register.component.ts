@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit{
   private http;
   public countryList:any;
   public selectedCountry:any;
+  public borrower:any;
 
   constructor(httpClient:HttpClient) {
     this.http=httpClient
@@ -36,5 +37,17 @@ export class RegisterComponent implements OnInit{
   setSelectedCountry(country:any){
     this.selectedCountry=country;
     console.log(country)
+  }
+
+  submitForm() {
+    console.log(this.borrower)
+    this.http.post('http://localhost:8080/add', this.borrower)
+      .subscribe(response => {
+        console.log('Borrower added successfully', response);
+        // Clear the form after successful submission
+        this.borrower = {};
+      }, error => {
+        console.error('Error adding borrower', error);
+      });
   }
 }
