@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   private http;
   public countryList: any;
   public selectedCountry: any;
+  public selectedCountryCode: any;
   public isBorrowerExists: any;
   public borrower = {
     firstName: null,
@@ -45,7 +46,9 @@ export class RegisterComponent implements OnInit {
   }
   setSelectedCountry(country: any) {
     this.selectedCountry = country;
+    this.selectedCountryCode=this.selectedCountry.idd.root+""+this.selectedCountry.idd.suffixes[0]
     console.log(country);
+    console.log(this.selectedCountryCode);
   }
 
     async submitForm() {
@@ -58,9 +61,11 @@ export class RegisterComponent implements OnInit {
         Swal.fire({
           title: 'Can not register!!',
           text: `Borrower ${this.borrower.userName} already exists.Try using another username`,
+          icon:'error'
         });
       } else {
         console.log('add api triggerd');
+        console.log(this.borrower.contactNumber);
         this.http.post('http://localhost:8080/add', this.borrower).subscribe(
           (response) => {
             console.log('Borrower added successfully', response);
@@ -68,6 +73,7 @@ export class RegisterComponent implements OnInit {
             Swal.fire({
               title: 'User Registered Successfully',
               text: `Welcome ${this.borrower.userName}`,
+              icon:'success'
             });
             // Clear the form after successful submission
             this.borrower = {
