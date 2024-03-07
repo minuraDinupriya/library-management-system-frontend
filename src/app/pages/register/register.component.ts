@@ -17,7 +17,16 @@ export class RegisterComponent implements OnInit{
   private http;
   public countryList:any;
   public selectedCountry:any;
-  public borrower:any;
+  public borrower={
+    firstName: null,
+    lastName: null,
+    userName: null,
+    email: null,
+    address: null,
+    address2: null,
+    country: null,
+    contactNumber: null
+}
 
   constructor(httpClient:HttpClient) {
     this.http=httpClient
@@ -45,7 +54,16 @@ export class RegisterComponent implements OnInit{
       .subscribe(response => {
         console.log('Borrower added successfully', response);
         // Clear the form after successful submission
-        this.borrower = {};
+        this.borrower = {
+          firstName: null,
+          lastName: null,
+          userName: null,
+          email: null,
+          address: null,
+          address2: null,
+          country: null,
+          contactNumber: null
+        };
       }, error => {
         console.error('Error adding borrower', error);
       });
