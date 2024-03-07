@@ -20,5 +20,10 @@ export const routes: Routes = [
     {
         path:"sign-up",
         component:RegisterComponent
+    },
+    {
+        path:"",
+        redirectTo:"sign-up",
+        pathMatch:"full"
     }
 ];

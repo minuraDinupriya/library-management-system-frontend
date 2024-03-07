@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 // import { switchMap } from 'rxjs/operators';
 
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
     contactNumber: null,
   };
 
-  constructor(httpClient: HttpClient) {
+  constructor(httpClient: HttpClient,public router:Router) {
     this.http = httpClient;
   }
 
@@ -87,6 +88,7 @@ export class RegisterComponent implements OnInit {
               contactNumber: null,
             };
 
+            this.router.navigate(["login"])
           },
           (error) => {
             console.error('Error adding borrower', error);
