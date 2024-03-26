@@ -26,14 +26,14 @@ export class ViewAllBooksComponent implements OnInit {
   }
 
   loadBooks() {
-    this.http.get('http://localhost:8080/book/get').subscribe((data) => {
+    this.http.get('http://localhost:8081/book/get').subscribe((data) => {
       this.bookList = data;
       console.log(this.bookList);
     });
   }
 
   deleteBook() {
-    let api = 'http://localhost:8080/book/' + this.selectedBook.id;
+    let api = 'http://localhost:8081/book/' + this.selectedBook.id;
     this.http
       .delete(api, { responseType: 'text' })
       .subscribe((responce: string) => {
@@ -55,7 +55,7 @@ export class ViewAllBooksComponent implements OnInit {
   }
 
   saveBooks(){
-    let postApi="http://localhost:8080/book/add";
+    let postApi="http://localhost:8081/book/add";
     this.http.post(postApi, this.selectedBook).subscribe(()=>{
       console.log("saved")
       this.loadBooks();
