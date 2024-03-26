@@ -1,0 +1,116 @@
+<app-nav></app-nav>
+<main class="container w-50">
+    <div class="text-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="60"
+        height="60"
+        fill="currentColor"
+        class="bi bi-book"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M0 0v16l8-4-8-4zm8 4v8l8-4-8-4z"
+        />
+      </svg>
+      <h2>Add Book</h2>
+      <p class="lead">
+        Fill in the details below to add a new book to the system.
+      </p>
+    </div>
+  
+    <div class="row g-5">
+      <div>
+        <h4 class="mb-3">Book Details</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="isbn" class="form-label">ISBN</label>
+              <input
+                type="text"
+                class="form-control"
+                id="isbn"
+                placeholder="ISBN"
+                [(ngModel)]="book.isbn"
+                [ngModelOptions]="{standalone: true}"
+                required
+              />
+              <div class="invalid-feedback">ISBN is required.</div>
+            </div>
+  
+            <div class="col-sm-6">
+              <label for="title" class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                placeholder="Title"
+                [(ngModel)]="book.title"
+                [ngModelOptions]="{standalone: true}"
+                required
+              />
+              <div class="invalid-feedback">Title is required.</div>
+            </div>
+  
+            <div class="col-sm-6">
+              <label for="author" class="form-label">Author</label>
+              <input
+                type="text"
+                class="form-control"
+                id="author"
+                placeholder="Author"
+                [(ngModel)]="book.author"
+                [ngModelOptions]="{standalone: true}"
+                required
+              />
+              <div class="invalid-feedback">Author is required.</div>
+            </div>
+  
+            <div class="col-12">
+              <label for="category" class="form-label">Category</label>
+              <input
+                type="text"
+                class="form-control"
+                id="category"
+                placeholder="Category"
+                [(ngModel)]="book.category"
+                [ngModelOptions]="{standalone: true}"
+                required
+              />
+              <div class="invalid-feedback">Category is required.</div>
+            </div>
+  
+            <div class="col-md-3">
+              <label for="qty" class="form-label">Quantity</label>
+              <input
+                type="number"
+                class="form-control"
+                id="qty"
+                placeholder="Quantity"
+                [(ngModel)]="book.qty"
+                [ngModelOptions]="{standalone: true}"
+                required
+              />
+              <div class="invalid-feedback">Quantity is required.</div>
+            </div>
+          </div>
+  
+          <hr class="my-4" />
+  
+          <button class="w-100 btn btn-primary btn-lg" type="submit" (click)="submitForm()">
+            Add Book
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+    <p class="mb-1">&copy; 2023 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+  

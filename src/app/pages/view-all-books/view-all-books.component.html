@@ -17,7 +17,7 @@
       <tr *ngFor="let book of bookList">
         <td>#BN{{ book.id }}</td>
         <td>{{ book.isbn }}</td>
-        <td>{{ book.tittle }}</td>
+        <td>{{ book.title }}</td>
         <td>{{ book.author }}</td>
         <td>{{ book.category }}</td>
         <td>{{ book.qty }}</td>
@@ -67,7 +67,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        Do you want to delete '{{ selectedBook?.tittle }}' book?
+        Do you want to delete '{{ selectedBook?.title }}' book?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -107,7 +107,7 @@
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Title:</label>
-            <input type="text" [(ngModel)]="selectedBook && selectedBook.tittle" [ngModelOptions]="{standalone: true}"  class="form-control" id="recipient-name">
+            <input type="text" [(ngModel)]="selectedBook && selectedBook.title" [ngModelOptions]="{standalone: true}"  class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Author:</label>

@@ -41,7 +41,7 @@ export class ViewAllBooksComponent implements OnInit {
         this.loadBooks();
         Swal.fire({
           title: "Good job!",
-          text: `${this.selectedBook.tittle} is deleted` ,
+          text: `${this.selectedBook.title} is deleted` ,
           icon: "success"
         });
         this.selectedBook = null;
