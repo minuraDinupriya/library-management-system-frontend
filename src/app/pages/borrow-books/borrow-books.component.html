@@ -1,0 +1,89 @@
+<app-nav></app-nav>
+<div class="container">
+  <div class="container mt-5 text-center">
+    <h2 class="mb-4">Search Borrower</h2>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter borrower name"
+            [(ngModel)]="borrowerName"
+          />
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="searchBorrower()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <table class="table table-bordered" *ngIf="searchedBorrower">
+    <thead>
+      <th>Borrower ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Contact Number</th>
+      <th>Email</th>
+      <th>Username</th>
+    </thead>
+    <tbody >
+      <td>{{ searchedBorrower.bid }}</td>
+      <td>{{ searchedBorrower.firstName }}</td>
+      <td>{{ searchedBorrower.lastName }}</td>
+      <td>{{ searchedBorrower.contactNumber }}</td>
+      <td>{{ searchedBorrower.email }}</td>
+      <td>{{ searchedBorrower.userName }}</td>
+    </tbody>
+  </table>
+
+  <div class="container mt-5 text-center" *ngIf="searchedBorrower">
+    <h2 class="mb-4">Add books</h2>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Book Id"
+            [(ngModel)]="bookId"
+          />
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="searchBookById()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-bordered table-striped-columns table-hover" *ngIf="addedBookList.length>0">
+      <thead>
+        <th>ID</th>
+        <th>ISBN</th>
+        <th>TItle</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>QTY</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of addedBookList">
+          <td>{{book.id}}</td>
+          <td>{{book.isbn}}</td>
+          <td>{{book.title}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.category}}</td>
+          <td>{{book.qty}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
