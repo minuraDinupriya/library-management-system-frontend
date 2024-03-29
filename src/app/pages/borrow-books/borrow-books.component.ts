@@ -15,11 +15,16 @@ import Swal from 'sweetalert2';
 export class BorrowBooksComponent {
   constructor(private http: HttpClient) {}
 
+  bookIds:any=[];
+  
+
+  // public bookIds:any=[];
+
   borrowerName: any;
   searchedBorrower: any;
   bookId: any;
   // searchedBook: any;
-  addedBookList:any=[];
+  addedBookList: any = [];
 
   searchBorrower() {
     // Make an HTTP GET request to search for the borrower by name
@@ -30,6 +35,7 @@ export class BorrowBooksComponent {
           // Assign the response to the searchedBorrower variable
 
           this.searchedBorrower = response;
+          // this.transactionDetails.borrowerId = this.searchedBorrower.bid;
           console.log(this.searchedBorrower);
         },
         (error: any) => {
@@ -40,32 +46,63 @@ export class BorrowBooksComponent {
   }
 
   searchBookById() {
-    this.http.get<any>(`http://localhost:8081/book/search/${this.bookId}`).subscribe(
-      (response: any) => {
-        // Assign the response to the searchedBook variable
-        console.log(response);
-        Swal.fire({
-          title: "Do you want to save the changes?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Save",
-          denyButtonText: `Don't save`
-        }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
-          if (result.isConfirmed) {
-            this.addedBookList.push(response);
-            console.log(this.addedBookList);
-            
-            Swal.fire("Saved!", "", "success");
-          } else if (result.isDenied) {
-            Swal.fire("Changes are not saved", "", "info");
-          }
-        });
-      },
-      (error: any) => {
-        console.error('Error searching for book:', error);
-        // Handle error, e.g., display an alert
-      }
-    );
+    this.http
+      .get<any>(`http://localhost:8081/book/search/${this.bookId}`)
+      .subscribe(
+        (response: any) => {
+          // Assign the response to the searchedBook variable
+          console.log(response);
+          Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              this.addedBookList.push(response);
+              this.bookIds.push(response.id);
+              console.log(this.addedBookList);
+
+              Swal.fire('Saved!', '', 'success');
+            } else if (result.isDenied) {
+              Swal.fire('Changes are not saved', '', 'info');
+            }
+          });
+        },
+        (error: any) => {
+          console.error('Error searching for book:', error);
+          // Handle error, e.g., display an alert
+        }
+      );
+  }
+
+  lendBooks() {
+    
+    const transactionDetails: any = {
+      id: null,
+      borrowerId: this.searchedBorrower.bid,
+      bookIds:this.bookIds,
+      date: new Date(),
+      fine: 0.0,
+    };
+
+    console.log(transactionDetails);
+    
+
+    this.http
+      .post(`http://localhost:8082/book-transactions`,transactionDetails)
+      .subscribe(
+        (response: any) => {
+          // Assign the response to the searchedBorrower variable
+
+          console.log(response);
+        },
+        (error: any) => {
+          console.error('Error searching for borrower:', error);
+          // Handle error, e.g., display an alert
+        }
+      );
   }
 }
