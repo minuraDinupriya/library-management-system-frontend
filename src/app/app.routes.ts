@@ -6,6 +6,7 @@ import { ViewBorrowersComponent } from './pages/view-borrowers/view-borrowers.co
 import { HomeComponent } from './pages/home/home.component';
 import { AddBooksComponent } from './pages/add-books/add-books.component';
 import { BorrowBooksComponent } from './pages/borrow-books/borrow-books.component';
+import { ViewBorrowingsComponent } from './pages/view-borrowings/view-borrowings.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
     {
         path:"borrow-books",
         component:BorrowBooksComponent 
+    },
+    {
+        path:"view-borrowings",
+        component:ViewBorrowingsComponent
     },
     {
         path:"",
