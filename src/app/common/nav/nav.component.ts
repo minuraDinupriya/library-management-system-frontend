@@ -17,7 +17,7 @@ export class NavComponent {
     let timerInterval: any;
     Swal.fire({
       title: "Auto close alert!",
-      html: "I will close in <b></b> milliseconds.",
+      html: "Click elsewhere to undo<b></b> milliseconds.",
       timer: 2000,
       timerProgressBar: true,
       didOpen: () => {
