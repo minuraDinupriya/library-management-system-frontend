@@ -53,7 +53,7 @@ export class BorrowBooksComponent {
           // Assign the response to the searchedBook variable
           console.log(response);
           Swal.fire({
-            title: 'Do you want to save the changes?',
+            title: 'Do you want to lend this book?',
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: 'Save',
