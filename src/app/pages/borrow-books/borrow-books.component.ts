@@ -53,10 +53,10 @@ export class BorrowBooksComponent {
           // Assign the response to the searchedBook variable
           console.log(response);
           Swal.fire({
-            title: 'Do you want to lend this book?',
+            title: 'Do you want to add this book?',
             showDenyButton: true,
             showCancelButton: true,
-            confirmButtonText: 'Save',
+            confirmButtonText: 'add',
             denyButtonText: `Don't save`,
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
