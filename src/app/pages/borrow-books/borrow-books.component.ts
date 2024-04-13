@@ -57,7 +57,7 @@ export class BorrowBooksComponent {
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: 'add',
-            denyButtonText: `Don't save`,
+            denyButtonText: `cancel`,
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
