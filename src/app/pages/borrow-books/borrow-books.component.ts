@@ -59,7 +59,7 @@ export class BorrowBooksComponent {
             confirmButtonText: 'add',
             denyButtonText: `cancel`,
           }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
+            /* Read more about isConfirmed, isDenied below *///
             if (result.isConfirmed) {
               this.addedBookList.push(response);
               this.bookIds.push(response.id);
