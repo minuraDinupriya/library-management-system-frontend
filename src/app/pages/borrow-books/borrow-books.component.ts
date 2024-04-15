@@ -65,7 +65,7 @@ export class BorrowBooksComponent {
               this.bookIds.push(response.id);
               console.log(this.addedBookList);
 
-              Swal.fire('Saved!', '', 'success');
+              Swal.fire('Added!', '', 'success');
             } else if (result.isDenied) {
               Swal.fire('Changes are not saved', '', 'info');
             }
