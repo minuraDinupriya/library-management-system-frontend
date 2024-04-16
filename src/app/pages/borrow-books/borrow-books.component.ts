@@ -67,7 +67,7 @@ export class BorrowBooksComponent {
 
               Swal.fire('Added!', '', 'success');
             } else if (result.isDenied) {
-              Swal.fire('Changes are not saved', '', 'info');
+              Swal.fire('Book is not added', '', 'info');
             }
           });
         },
