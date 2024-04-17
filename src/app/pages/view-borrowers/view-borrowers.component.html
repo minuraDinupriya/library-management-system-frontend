@@ -13,9 +13,6 @@
           <th scope="col">Address 2</th>
           <th scope="col">Country</th>
           <th scope="col">Contact Number</th>
-          <!-- <th scope="col">Address</th> -->
-          <!-- <th scope="col">Borrowed Date</th> -->
-          <!-- <th scope="col">ISBN</th> -->
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -30,8 +27,6 @@
           <td>{{ borrower.address2 }}</td>
           <td>{{ borrower.country }}</td>
           <td>{{ borrower.contactNumber }}</td>
-          <!-- <td>{{ borrower.borrowed_date }}</td>
-          <td>{{ borrower.isbn }}</td> -->
           <td>
             <button
               (click)="setSelectedBorrower(borrower)"
